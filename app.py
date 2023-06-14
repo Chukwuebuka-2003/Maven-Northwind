@@ -101,11 +101,16 @@ def calculate_sales_trends(order_details_df, orders_df):
     # Merge order_details_df and orders_df
     merged_df = pd.merge(order_details_df, orders_df, on='orderID')
 
-    # Convert the 'orderDate' column to datetime data type with the correct format
-    merged_df['orderDate'] = pd.to_datetime(merged_df['orderDate'], format='%Y-%m-%d')
+    # Print unique values in the 'orderDate' column
+    # print(merged_df['orderDate'].unique())
+
+    # Convert the 'orderDate' column to datetime data type
+    merged_df['orderDate'] = pd.to_datetime(merged_df['orderDate'], errors='coerce')
 
     # Set the 'orderDate' column as the index
     merged_df.set_index('orderDate', inplace=True)
+
+    # Rest of the code...
 
     # Calculate monthly revenue
     monthly_revenue = merged_df['revenue'].resample('M').sum()
