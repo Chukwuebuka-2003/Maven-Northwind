@@ -1,3 +1,2 @@
-Streamlit
 Pandas
 Matplotlib
