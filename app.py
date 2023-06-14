@@ -101,7 +101,7 @@ def calculate_sales_trends(order_details_df, orders_df):
     merged_df = pd.merge(order_details_df, orders_df, on='orderID')
 
     # Convert the 'orderDate' column to datetime data type with the correct format
-    merged_df['orderDate'] = pd.to_datetime(merged_df['orderDate'], format='%Y-%m-%d')
+    merged_df['orderDate'] = pd.to_datetime(merged_df['orderDate'], infer_datetime_format=True)
 
     # Set the 'orderDate' column as the index
     merged_df.set_index('orderDate', inplace=True)
