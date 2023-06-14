@@ -253,7 +253,7 @@ def calculate_key_countries_by_sales(orders_df, customers_df, order_details_df):
     key_cities = sales_by_city.nlargest(5, 'revenue')
 
     # Visualize key cities by sales
-    st.subheader('Key Cities by Sales')
+    st.subheader('Key Countries by Sales')
     st.bar_chart(key_cities.set_index('country'))
 
     # Analysis of key cities
