@@ -96,12 +96,13 @@ def calculate_key_metrics(order_details_df, orders_df, products_df, customers_df
 
     # Customers card
     st.metric(label='Customers', value=total_customers)
+    
 def calculate_sales_trends(order_details_df, orders_df):
     # Merge order_details_df and orders_df
     merged_df = pd.merge(order_details_df, orders_df, on='orderID')
 
     # Convert the 'orderDate' column to datetime data type with the correct format
-    merged_df['orderDate'] = pd.to_datetime(merged_df['orderDate'], infer_datetime_format=True)
+    merged_df['orderDate'] = pd.to_datetime(merged_df['orderDate'], format='%Y-%m-%d')
 
     # Set the 'orderDate' column as the index
     merged_df.set_index('orderDate', inplace=True)
@@ -133,7 +134,7 @@ def calculate_sales_trends(order_details_df, orders_df):
     # Create a line chart for sales growth rate
     st.subheader('Sales Growth Rate')
     st.line_chart(sales_growth_rate)
-
+    
 def calculate_product_performance(order_details_df, products_df):
     # Code for Product Performance KPI
     # Calculate total units sold by product
